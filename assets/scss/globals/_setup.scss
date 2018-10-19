@@ -1,0 +1,23 @@
+* {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+
+    &,
+    &::before,
+    &::after {
+        box-sizing: border-box;
+    }
+}
+
+* {
+    outline: none;
+}
+
+html,
+body {
+    @include fluid-type($min_width, $max_width, $min_font, $max_font);
+
+    color: $stratos;
+    font-family: 'averta_stdregular';
+    opacity: 1;
+}

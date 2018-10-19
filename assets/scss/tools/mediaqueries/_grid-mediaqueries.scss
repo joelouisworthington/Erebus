@@ -1,0 +1,28 @@
+$num-grid-col: 12;
+$mobile-grid-gutter-width: $mobile-gutter-width;
+
+@media (max-width: 880px) {
+
+    .grid {
+        &--with-gutter {
+            margin-left: -#{$mobile-grid-gutter-width};
+
+            @for $i from 1 through $num-grid-col {
+                .col-#{$i} {
+                    $gutter-col-width: percentage($i / $num-grid-col);
+
+                    margin-left: #{$mobile-grid-gutter-width};
+                    width: calc(#{$gutter-col-width} - #{$mobile-grid-gutter-width});
+                }
+            }
+        }
+
+        &--vertical-spacing {
+            margin-top: -#{$mobile-grid-gutter-width};
+
+            [class*="col-"] {
+                margin-top: #{$mobile-grid-gutter-width};
+            }
+        }
+    }
+}

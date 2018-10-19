@@ -1,0 +1,27 @@
+$container-width: 1900px;
+
+$section-margin: 6.25rem;
+$mobile-section-margin: 30px;
+
+$gutter-width: 50px;
+$mobile-gutter-width: 15px;
+
+// Colours
+
+
+//breakpoint sizes ~ remember to change these in main.js too
+$mobile_breakpoint: 730px;
+$tablet_breakpoint: 1025px;
+$large_desktop_breakpoint: 1250px;
+
+// Breakpoint sizes ~ remember to change these in main.js too
+$phablet-breakpoint-lower: ($mobile-breakpoint + 1);
+$phablet-breakpoint: 729;
+$tablet-breakpoint-lower: ($mobile-breakpoint + 1);
+$desktop-breakpoint: ($tablet-breakpoint + 1);
+$large-desktop-breakpoint: 1100;
+
+$min_width: 320px;
+$max_width: 2600px;
+$min_font: 14px;
+$max_font: 24px;

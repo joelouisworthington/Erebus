@@ -1,0 +1,514 @@
+/**
+    Basic useful mixins - anything custom import a custom mixin file for the theme
+ */
+@mixin responsive-text($min, $max) {
+    $diff: $max - $min;
+
+    font-size: #{$max}px;
+    font-size: calc(#{$min}px + #{$diff} * (100vw - #{$minimum-viewport-width}px) / (#{$large-desktop-breakpoint} - #{$minimum-viewport-width}));
+
+    @include large-desktop {
+        font-size: #{$max}px;
+    }
+}
+
+@mixin visually-hidden {
+    position: absolute;
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+
+    // scss-lint:disable DuplicateProperty
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+}
+
+@mixin hide-text {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0;
+    color: transparent;
+}
+
+@mixin vertical-center($position: relative) {
+    transform: translateY(-50%);
+    position: $position;
+    top: 50%;
+}
+
+@mixin horizontal-center($position: relative) {
+    transform: translateX(-50%);
+    left: 50%;
+    position: $position;
+}
+
+@mixin absolute-center($position: relative) {
+    transform: translate(-50%, -50%);
+    left: 50%;
+    position: $position;
+    top: 50%;
+}
+
+@mixin list-reset {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin background-cover {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@mixin centered-radial-gradient($color: #FFF, $amount: 20%) {
+    background: radial-gradient(circle, lighten($color, $amount) 10%, $color 90%);
+}
+
+@mixin stripped-background($color: #FFF) {
+    background: repeating-linear-gradient(45deg, darken($color, 10%), darken($color, 10%) 2px, $color 2px, $color 6px);
+}
+
+@mixin fade-to-gradient($direction, $color-1, $color-2) {
+    background: linear-gradient(to $direction, $color-1, $color-2);
+}
+
+@mixin font-icon($unicode, $icon-size: false) {
+    content: unquote("\"\\#{$unicode}\"");
+    font-family: 'icomoon';
+
+    @if $icon-size {
+        font-size: $icon-size;
+    }
+}
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        padding-top: ($height / $width) * 100%;
+        width: 100%;
+    }
+
+    > * {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+@mixin link-underline($color, $bottom: 0, $display: 'inline-block') {
+    display: $display;
+    position: relative;
+    text-decoration: none;
+
+    &:hover::before {
+        transform: scaleX(1) translateX(-50%);
+    }
+
+    &::before {
+        background-color: $color;
+        bottom: $bottom;
+        content: '';
+        height: 1px;
+        left: 50%;
+        max-width: 100%;
+        position: absolute;
+        transform: scaleX(0) translateX(-50%);
+        transform-origin: -50% -50%;
+        transition: transform $default-transition-timing;
+        width: 100%;
+    }
+}
+
+@mixin close-icon-pseudo-element($color, $height: 1rem, $left: 0, $top: 50%) {
+    &::before,
+    &::after {
+        background-color: $color;
+        content: '';
+        height: $height;
+        left: $left;
+        pointer-events: none;
+        position: absolute;
+        top: $top;
+        width: 1px;
+    }
+
+    &::before {
+        transform: translateY(-50%) rotate(45deg);
+    }
+
+    &::after {
+        transform: translateY(-50%) rotate(-45deg);
+    }
+}
+
+@mixin default-element-border-styles($color: $default-border-color) {
+    border: 1px solid $color;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+@mixin vertical-center($position: relative) {
+    transform: translateY(-50%);
+    position: $position;
+    top: 50%;
+}
+
+@mixin vertical-reset($position: relative) {
+    transform: translateY(0);
+    top: initial;
+    position: $position;
+}
+
+@mixin horizontal-center($position: relative) {
+    transform: translateX(-50%);
+    left: 50%;
+    position: $position;
+}
+
+@mixin horizontal-reset($position: relative) {
+    transform: translateX(0);
+    left: initial;
+    position: $position;
+}
+
+@mixin absolute-center($position: relative) {
+    transform: translate(-50%, -50%);
+    left: 50%;
+    position: $position;
+    top: 50%;
+}
+
+@mixin absolute-reset($position: relative) {
+    transform: translate(0, 0);
+    left: auto;
+    position: $position;
+    top: auto;
+}
+
+@mixin font-awesome-icon($unicode, $icon-size: false) {
+    content: unquote("\"\\#{$unicode}\"");
+    font-family: FontAwesome;
+
+    @if $icon-size {
+        @include font-size($icon-size);
+    }
+}
+
+@mixin zoom($zoom-level) {
+    transform: scale($zoom-level);
+    transform-origin: 0 0;
+}
+
+/**
+Taken from: https://css-tricks.com/snippets/css/fluid-typography/
+ */
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+        & {
+            font-size: $min-font-size;
+            @media screen and (min-width: $min-vw) {
+                font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+            }
+            @media screen and (min-width: $max-vw) {
+                font-size: $max-font-size;
+            }
+        }
+    }
+}
+
+@mixin icon($height, $width) {
+    transition-duration: 0.5s;
+    position: absolute;
+    height: $height;
+    width: $width;
+    top: 30px;
+    background-color: $color-mine-shaft;
+}
+
+@mixin icon-before($height, $width, $top) {
+    transition-duration: 0.5s;
+    position: absolute;
+    width: $width;
+    height: $height;
+    background-color: $color-mine-shaft;
+    content: "";
+    top: $top;
+}
+
+@mixin icon-after($height, $width, $top) {
+    transition-duration: 0.5s;
+    position: absolute;
+    width: $width;
+    height: $height;
+    background-color: $color-mine-shaft;
+    content: "";
+    top: $top;
+}
+
+@mixin icon-circle($height, $width) {
+    transition-duration: 0.5s;
+    position: absolute;
+    height: $height;
+    width: $width;
+    top: 2px;
+    border-radius: 100%;
+    background: transparent;
+    border: 4px solid black;
+    left: -15px;
+}
+
+@mixin close-icon-pseudo-element($color, $height: 1rem, $left: 0, $top: 50%) {
+    &::before,
+    &::after {
+        background-color: $color;
+        content: '';
+        cursor: pointer;
+        height: $height;
+        left: $left;
+        pointer-events: none;
+        position: absolute;
+        top: $top;
+        width: 1px;
+    }
+
+    &::before {
+        transform: translateY(-50%) rotate(45deg);
+    }
+
+    &::after {
+        transform: translateY(-50%) rotate(-45deg);
+    }
+}
+
+@mixin list-reset {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/**
+    Add imports below here
+ */
+
+// https://codepen.io/KPCodes/pen/Ypwrdx
+
+@mixin codepen-hamburger {
+    input {
+        display: none;
+    }
+
+    label {
+        cursor: pointer;
+        display: inline-block;
+        height: 20px;
+        margin-left: 40px;
+        margin-top: 38px;
+        position: relative;
+        text-align: left;
+        transition: all .5s;
+        width: 20px;
+
+        div,
+        div:before,
+        div:after {
+            background: $black;
+            position: absolute;
+            height: 3px;
+            width: 22px;
+            border-radius: 4px;
+            transition: all .3s;
+        }
+    }
+
+    label {
+        div:first-child {
+            top: 0px;
+        }
+        div:nth-child(2) {
+            top: 8px;
+        }
+        div:nth-child(3) {
+            top: 16px;
+        }
+    }
+
+    #hamburger + label {
+        div {
+            transition: top .15s .3s, transform .15s .12s;
+        }
+        div:nth-child(3) {
+            transition: top .15s .3s, transform .3s;
+        }
+    }
+
+    #hamburger:checked + label {
+        div {
+            top: 10px;
+            transform: rotate(45deg);
+            transition: top .15s, transform .12s .15s;
+        }
+        div:nth-child(3) {
+            transform: rotate(135deg);
+            transition: top .15s, transform .3s .15s;
+        }
+    }
+
+    @media (max-width: 768px) {
+        label {
+            div:first-child {
+                top: 0px;
+            }
+            div:nth-child(2) {
+                top: 4px;
+            }
+            div:nth-child(3) {
+                top: 8px;
+            }
+        }
+
+        #hamburger:checked + label {
+            div {
+                top: 5px;
+                transform: rotate(45deg);
+                transition: top .15s, transform .12s .15s;
+            }
+            div:nth-child(3) {
+                transform: rotate(135deg);
+                transition: top .15s, transform .3s .15s;
+            }
+        }
+    }
+}
+
+@mixin button {
+
+    background-color: $bermuda;
+    border: 2px solid $bermuda;
+    color: $white;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 2.5rem;
+    margin-right: $gutter-width;
+    min-width: 10rem;
+    padding: 0 30px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .5s, color .5s, border .5s;
+
+    &:active, &--active {
+        background-color: $stratos;
+        border: 2px solid $stratos;
+        color: $white;
+    }
+
+    &:hover {
+        background-color: $keppel;
+        border: 2px solid $keppel;
+        color: $white;
+    }
+
+    &--alt {
+        background-color: $white;
+        border: 2px solid $bermuda;
+        color: $bermuda;
+
+        &:hover {
+            border-color: $keppel;
+        }
+    }
+}
+
+@mixin checkbox {
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        @include visually-hidden;
+
+        &:checked + label::after {
+            display: block;
+        }
+
+        + label {
+            font-size: .8rem;
+            padding: 1rem 2rem;
+            position: relative;
+            margin: 0 auto;
+            align-self: center;
+            display: flex;
+
+            &::before,
+            &::after {
+                @include vertical-center(absolute);
+                content: '';
+            }
+
+            &::before {
+                border: 2px solid $white;
+                display: block;
+                height: 1rem;
+                left: 3rem;
+                width: 1rem;
+            }
+
+            &::after {
+                border: 2px solid $white;
+                border-left: 0;
+                border-top: 0;
+                display: none;
+                height: .6rem;
+                left: 3.35rem;
+                margin-top: -2px;
+                position: absolute;
+                top: 50%;
+                transform: translate(0,-50%) rotate(45deg);
+                width: .3rem;
+            }
+        }
+
+    }
+
+    &--alt {
+        display: flex;
+        flex-direction: row;
+
+        input[type="checkbox"],
+        input[type="radio"] {
+
+            + label {
+                margin: 0;
+
+                &::before {
+                    border: 2px solid $stratos;
+                    left: 0;
+                }
+
+                &::after {
+                    border: 2px solid $stratos;
+                    border-top: none;
+                    border-left: none;
+                    left: .35rem;
+                }
+            }
+
+        }
+    }
+}

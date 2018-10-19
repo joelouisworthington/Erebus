@@ -1,0 +1,45 @@
+.u {
+    &-justify-center {
+        justify-content: center;
+    }
+
+    &-flex-end {
+        justify-content: flex-end;
+    }
+
+    &-visually-hidden{
+        @include visually-hidden();
+    }
+
+    &-full-width {
+        width: 100%;
+    }
+
+    &-bermuda {
+        color: $bermuda;
+    }
+
+    &-half {
+        width: 50% !important;
+    }
+
+    &-inset-content {
+        padding: 0 6.66rem;
+    }
+
+    &-show-mobile {
+        display: none;
+    }
+
+    &-align-right {
+        text-align: right;
+    }
+
+    &-flex-row {
+        flex-direction: row;
+    }
+}
+
+.screen-reader-text {
+    @include visually-hidden();
+}
