@@ -16,7 +16,7 @@ class Block
      * @param string $category
      * @param array $keywords
      */
-    public function newBlock($name, $title, $callback, $description = '', $icon = '', $category = '', $keywords = [])
+    public function newBlock($name, $title, $callback, $description = '', $keywords = [], $icon = 'admin-comments', $category = 'common')
     {
         // Register a testimonial ACF Block
         if (function_exists('acf_register_block')) {
@@ -25,9 +25,9 @@ class Block
                 'title' => __($title),
                 'description' => __($description),
                 'render_callback' => $callback,
-                'category'			=> 'common',
-                'icon'				=> 'admin-comments',
-                'keywords'			=> array( 'testimonial', 'quote' ),
+                'category'			=> $category,
+                'icon'				=> $icon,
+                'keywords'			=> $keywords,
             ]);
         }
     }

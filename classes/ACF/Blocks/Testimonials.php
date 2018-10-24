@@ -24,7 +24,7 @@ class Testimonials extends Block implements BlockInterface
      */
     public function registerBlock()
     {
-        $this->newBlock('testimonial', 'Testimonial', 'ACF\Blocks\Testimonials:renderBlock');
+        $this->newBlock('testimonial', 'Testimonial', [$this, 'renderBlock']);
     }
 
     /**
