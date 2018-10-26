@@ -1,0 +1,19 @@
+{
+    "name": "nanosoup/erebus",
+    "description": "A starter theme for Wordpress sites built with Mimir",
+    "type": "wordpress-theme",
+    "require": {
+        "composer/installers": "^1.6"
+    },
+    "license": "Unlicense",
+    "authors": [
+        {
+            "name": "Jez Emery",
+            "email": "jez@hiohzo.com"
+        },
+        {
+            "name": "Harry Wiseman",
+            "email": "enquiries@harry-wiseman.co.uk"
+        }
+    ]
+}
