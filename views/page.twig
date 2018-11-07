@@ -1,9 +1,17 @@
-<section>
-    <div class="container">
-        <div class="gutter-grid">
-            <div class="col-7 col-push-1">
-                {{ post.post_content }}
+{% extends 'base.twig' %}
+
+{% block header %}
+    <meta name="robots" value="index">
+{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="container">
+            <div class="gutter-grid">
+                <div class="col-7 col-push-1">
+                    {{ function('the_content') }}
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+{% endblock %}
