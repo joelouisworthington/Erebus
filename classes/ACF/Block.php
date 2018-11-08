@@ -28,6 +28,16 @@ class Block
                 'category'			=> $category,
                 'icon'				=> $icon,
                 'keywords'			=> $keywords,
+                'allowedPostTypes' => [
+                    'post',
+                    'page'
+                ],
+                'allowedTemplates' => [
+
+                ],
+                'allowedPages' => [
+
+                ]
             ]);
         }
     }
