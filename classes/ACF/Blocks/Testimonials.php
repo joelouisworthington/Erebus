@@ -2,8 +2,8 @@
 
 namespace ACF\Blocks;
 
-use ACF\Block;
-use ACF\BlockInterface;
+use NanoSoup\Nemesis\ACF\Block;
+use NanoSoup\Nemesis\ACF\BlockInterface;
 use Timber\Timber;
 
 /**
