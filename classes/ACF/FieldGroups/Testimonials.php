@@ -10,11 +10,17 @@ use NanoSoup\Nemesis\ACF\BaseFields;
  */
 class Testimonials extends BaseFields
 {
+    /**
+     *
+     */
     public function init()
     {
         add_action('acf/init', [$this, 'registerFieldGroup']);
     }
 
+    /**
+     *
+     */
     public function registerFieldGroup()
     {
         acf_add_local_field_group([

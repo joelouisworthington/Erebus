@@ -1,8 +1,9 @@
 <?php
+
 namespace ACF\Blocks;
 
-use ACF\Block;
-use ACF\BlockInterface;
+use NanoSoup\Nemesis\ACF\Block;
+use NanoSoup\Nemesis\ACF\BlockInterface;
 use Timber\Timber;
 
 /**
@@ -16,7 +17,7 @@ class Testimonials extends Block implements BlockInterface
      */
     public function init()
     {
-        add_action('acf/init', [$this, 'registerBlock']);
+        add_action('init', [$this, 'registerBlock']);
     }
 
     /**
@@ -36,6 +37,8 @@ class Testimonials extends Block implements BlockInterface
         $vars['block'] = $block;
         $vars['fields'] = get_fields();
 
-        Timber::render( get_stylesheet_directory() . '/classes/ACF/Blocks/views/content-testimonial.twig', $vars );
+        $vars['fields']['avatar'] = new \Timber\Image($vars['fields']['avatar']);
+
+        Timber::render( get_stylesheet_directory() . '/classes/ACF/Blocks/views/content-testimonials.twig', $vars );
     }
 }
