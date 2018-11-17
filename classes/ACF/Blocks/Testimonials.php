@@ -15,24 +15,29 @@ class Testimonials extends Block implements BlockInterface
     /**
      * @return mixed|void
      */
-    public function init()
+    public function init(): void
     {
-        add_action('init', [$this, 'registerBlock']);
+        add_action('acf/init', [$this, 'registerBlock']);
     }
 
     /**
-     * @return mixed|void
+     * @return mixed
      */
-    public function registerBlock()
+    public function registerBlock(): void
     {
-        $this->newBlock('testimonial', 'Testimonial', [$this, 'renderBlock']);
+        $this->setBlockName('testimonial')
+            ->setBlockTitle('Testimonial')
+            ->setBlockCallback([__CLASS__, 'renderBlock'])
+            ->setBlockIcon('format-quote')
+            ->setCat('generic', 'Generic Blocks')
+            ->saveBlock();
     }
 
     /**
      * @param $block
      * @return mixed|void
      */
-    public function renderBlock($block)
+    public static function renderBlock($block): void
     {
         $vars['block'] = $block;
         $vars['fields'] = get_fields();
