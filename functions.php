@@ -11,7 +11,7 @@ add_filter('allowed_block_types', 'allowedBlocks');
 
 function allowedBlocks($allowed_block_types)
 {
-    $blocks = acf_get_blocks();
+    $blocks = acf_get_block_types();
 
     $allowed = [
         'core/paragraph',
