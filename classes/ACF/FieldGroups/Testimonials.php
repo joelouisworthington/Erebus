@@ -1,6 +1,6 @@
 <?php
 
-namespace ACF\FieldGroups;
+namespace NanoSoup\Erebus\ACF\FieldGroups;
 
 use NanoSoup\Nemesis\ACF\BaseFields;
 

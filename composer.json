@@ -3,17 +3,23 @@
     "description": "A starter theme for Wordpress sites built with Mimir",
     "type": "wordpress-theme",
     "require": {
+      "php": ">=7.3",
         "composer/installers": "^1.6"
     },
     "license": "Unlicense",
     "authors": [
         {
             "name": "Jez Emery",
-            "email": "jez@hiohzo.com"
+          "email": "github@hiohzo.com"
         },
         {
             "name": "Harry Wiseman",
             "email": "enquiries@harry-wiseman.co.uk"
         }
-    ]
+    ],
+  "autoload": {
+    "psr-4": {
+      "NanoSoup\\Erebus\\": "classes/"
+    }
+  }
 }
