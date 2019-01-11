@@ -1,6 +1,6 @@
 <?php
 
-namespace ACF\Blocks;
+namespace NanoSoup\Erebus\ACF\Blocks;
 
 use NanoSoup\Nemesis\ACF\Blocks\Block;
 use NanoSoup\Nemesis\ACF\Blocks\BlockInterface;
