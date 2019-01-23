@@ -1,0 +1,13 @@
+$font-path: './assets/fonts' !default;
+$image-path: './images' !default;
+
+@import 'settings/variables',
+        'settings/typography';
+
+@import 'tools/grid',
+        'tools/mixins',
+        'tools/utilities';
+
+// Media queries go here
+@import 'tools/mediaqueries/grid-mediaqueries',
+        'tools/mediaqueries/utilities-mediaqueries';
