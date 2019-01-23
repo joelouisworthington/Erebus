@@ -44,6 +44,6 @@ class Testimonials extends Block implements BlockInterface
 
         $vars['fields']['avatar'] = new \Timber\Image($vars['fields']['avatar']);
 
-        Timber::render( get_stylesheet_directory() . '/classes/ACF/Blocks/views/content-testimonials.twig', $vars );
+        Timber::render( get_stylesheet_directory() . '/classes/ACF/Blocks/views/testimonials.twig', $vars );
     }
 }
