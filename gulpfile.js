@@ -16,8 +16,8 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     paths = {
         input_scss: [
-            './wp-content/themes/erebus/assets/scss/style.scss',
-            './wp-content/themes/erebus/assets/scss/editor-style.scss'
+            './assets/scss/style.scss',
+            './assets/scss/editor-style.scss'
         ]
     };
 
@@ -34,7 +34,7 @@ gulp.task('scss', function () {
         }))
         .pipe(cleanCSS())
         .pipe(rename({
-            dirname: './wp-content/themes/erebus/'
+            dirname: './'
         }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./'))
@@ -43,16 +43,16 @@ gulp.task('scss', function () {
 });
 
 gulp.task('images', function () {
-    gulp.src('./wp-content/themes/erebus/assets/images/*')
+    gulp.src('./assets/images/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('./wp-content/themes/erebus/images/')
+        .pipe(gulp.dest('./assets/images/')
         );
 });
 
 gulp.task('js', function () {
     // set up the browserify instance on a task basis
     var b = browserify({
-        entries: './wp-content/themes/erebus/assets/js/main.js',
+        entries: './assets/js/main.js',
         debug: true
     });
 
@@ -63,7 +63,7 @@ gulp.task('js', function () {
         // Add transformation tasks to the pipeline here.
         .pipe(uglify())
         .pipe(rename({
-            dirname: './wp-content/themes/erebus/'
+            dirname: './'
         }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./'));
@@ -72,6 +72,6 @@ gulp.task('js', function () {
 //Watch task
 gulp.task('default', ['scss', 'js'], function () {
     livereload.listen();
-    gulp.watch('./wp-content/themes/erebus/assets/scss/**/*.scss', ['scss']);
-    gulp.watch('./wp-content/themes/erebus/assets/js/**/*.js', ['js']);
+    gulp.watch('./assets/scss/**/*.scss', ['scss']);
+    gulp.watch('./assets/js/**/*.js', ['js']);
 });

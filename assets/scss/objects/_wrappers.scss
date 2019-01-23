@@ -1,0 +1,29 @@
+.site-content-contain {
+    margin-top: $header-height;
+    position: relative;
+    width: calc(100% - #{$header-height});
+}
+
+.content-section {
+    padding-left: 6.66rem;
+    padding-right: 6.66rem;
+    transition: padding .3s;
+}
+
+section.content-section {
+    padding-bottom: $section-margin;
+    padding-top: $section-margin;
+
+    &--reduced-padding {
+        padding-bottom: 3.33rem;
+        padding-top: 3.33rem;
+    }
+
+    &--border-bottom {
+        border-bottom: 2px solid $stratos;
+    }
+
+    &--no-padding {
+        padding-top: 0;
+    }
+}
