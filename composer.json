@@ -19,7 +19,7 @@
     ],
   "autoload": {
     "psr-4": {
-      "NanoSoup\\Erebus\\": "classes/"
+      "{{ SITE_NAMESPACE }}\\": "classes/"
     }
   }
 }
