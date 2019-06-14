@@ -1,29 +1,20 @@
-.site-content-contain {
-    margin-top: $header-height;
-    position: relative;
-    width: calc(100% - #{$header-height});
-}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+    padding-left: $gutter-width;
+    padding-right: $gutter-width;
+    width: 100%;
 
-.content-section {
-    padding-left: 6.66rem;
-    padding-right: 6.66rem;
-    transition: padding .3s;
-}
-
-section.content-section {
-    padding-bottom: $section-margin;
-    padding-top: $section-margin;
-
-    &--reduced-padding {
-        padding-bottom: 3.33rem;
-        padding-top: 3.33rem;
+    &--large {
+        max-width: 1600px;
     }
 
-    &--border-bottom {
-        border-bottom: 2px solid $stratos;
+    &--medium {
+        max-width: 1240px;
     }
 
-    &--no-padding {
-        padding-top: 0;
+    &--small {
+        max-width: 700px;
     }
 }

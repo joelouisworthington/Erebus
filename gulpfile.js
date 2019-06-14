@@ -45,12 +45,10 @@ gulp.task('scss', function () {
 gulp.task('images', function () {
     gulp.src('./assets/images/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('./assets/images/')
-        );
+        .pipe(gulp.dest('./images/'));
 });
 
 gulp.task('js', function () {
-    // set up the browserify instance on a task basis
     var b = browserify({
         entries: './assets/js/main.js',
         debug: true
@@ -60,7 +58,6 @@ gulp.task('js', function () {
         .pipe(source('main.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        // Add transformation tasks to the pipeline here.
         .pipe(uglify())
         .pipe(rename({
             dirname: './'
@@ -70,8 +67,10 @@ gulp.task('js', function () {
 });
 
 //Watch task
-gulp.task('default', ['scss', 'js'], function () {
+gulp.task('watch', ['scss', 'js', 'images'], function () {
     livereload.listen();
     gulp.watch('./assets/scss/**/*.scss', ['scss']);
     gulp.watch('./assets/js/**/*.js', ['js']);
 });
+
+gulp.task('default', ['scss', 'js', 'images']);

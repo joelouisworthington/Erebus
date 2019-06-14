@@ -1,56 +1,45 @@
 $num-grid-col: 12;
 $grid-gutter-width: $gutter-width;
 
-%grid {
+@mixin column($i) {
+    width: percentage($i / $num-grid-col);
+}
+
+@mixin column-with-gutter($i, $grid-gutter-width: $grid-gutter-width) {
+    $gutter-col-width: percentage($i / $num-grid-col);
+
+    margin-left: #{$grid-gutter-width};
+    margin-top: #{$grid-gutter-width};
+    width: calc(#{$gutter-col-width} - #{$grid-gutter-width});
+}
+
+@mixin grid() {
     display: flex;
     flex-wrap: wrap;
 }
 
-%col {
-    flex-direction: column;
+@mixin grid-with-gutter($grid-gutter-width: $grid-gutter-width) {
+    @include grid();
+    margin-left: -#{$grid-gutter-width};
+    margin-top: -#{$grid-gutter-width};
 }
 
 .grid {
-    @extend %grid;
+    @include grid;
 
     @for $i from 1 through $num-grid-col {
-        %col-#{$i} {
-            @extend %col;
-            width: percentage($i / $num-grid-col);
-        }
-
         .col-#{$i} {
-            @extend %col-#{$i};
-        }
-
-        %col-push-#{$i} {
-            @extend %col;
-            margin-left: percentage($i / $num-grid-col);
-        }
-
-        .col-push-#{$i} {
-            @extend %col-push-#{$i};
+            @include column($i);
         }
     }
 
     &--with-gutter {
-        margin-left: -#{$grid-gutter-width};
+        @include grid-with-gutter;
 
         @for $i from 1 through $num-grid-col {
             .col-#{$i} {
-                $gutter-col-width: percentage($i / $num-grid-col);
-
-                margin-left: #{$grid-gutter-width};
-                width: calc(#{$gutter-col-width} - #{$grid-gutter-width});
+                @include column-with-gutter($i);
             }
-        }
-    }
-
-    &--vertical-spacing {
-        margin-top: -#{$grid-gutter-width};
-
-        [class*="col-"] {
-            margin-top: #{$grid-gutter-width};
         }
     }
 }
