@@ -1,27 +1,28 @@
-$container-width: 1900px;
+// Global
+$body-font-stack: 'Lato', sans-serif;
+$section-margin: 4rem;
+$section-margin-mobile: 2rem;
 
-$section-margin: 6.25rem;
-$mobile-section-margin: 30px;
+$gutter-width: 2;
+$mobile-gutter-width: 1rem;
 
-$gutter-width: 50px;
-$mobile-gutter-width: 15px;
+$default-transition-timing: .3s;
+$default-delay-timing: .2s;
 
 // Colours
+$black: #000;
+$white: #fff;
 
-
-//breakpoint sizes ~ remember to change these in main.js too
-$mobile_breakpoint: 730px;
-$tablet_breakpoint: 1025px;
-$large_desktop_breakpoint: 1250px;
-
-// Breakpoint sizes ~ remember to change these in main.js too
+// Breakpoint sizes
+$mobile-breakpoint: 730px;
+$tablet-breakpoint: 1025px;
 $phablet-breakpoint-lower: ($mobile-breakpoint + 1);
 $phablet-breakpoint: 729;
 $tablet-breakpoint-lower: ($mobile-breakpoint + 1);
 $desktop-breakpoint: ($tablet-breakpoint + 1);
 $large-desktop-breakpoint: 1100;
 
-$min_width: 320px;
-$max_width: 2600px;
-$min_font: 14px;
-$max_font: 24px;
+$min-width: 320px;
+$max-width: 1440px;
+$min-font: 14px;
+$max-font: 16px;

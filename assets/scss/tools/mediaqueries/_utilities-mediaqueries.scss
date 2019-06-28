@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .u {
         &-hidden-mobile {
             display: none;
@@ -9,12 +9,12 @@
         }
 
         &-inset-content {
-            padding: 0 0;
+            padding-left: 0;
+            padding-right: 0;
         }
 
-        &-half{
+        &-half {
             width: 100% !important;
         }
     }
-
 }
