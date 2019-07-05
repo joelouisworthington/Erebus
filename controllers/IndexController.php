@@ -30,7 +30,7 @@ class IndexController
         }, 600);
 
         return [
-            'templates' => ['views/Index/index.twig'],
+            'templates' => ['views/index/index.twig'],
             'context' => $context
         ];
     }
