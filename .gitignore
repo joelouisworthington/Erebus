@@ -9,17 +9,20 @@ wp-content/uploads/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
 
-wp-content/themes/ukft/acf-json/*
+wp-content/themes/*/acf-json/*
 
 /license.txt
 /readme.html
 /sitemap.xml
 /sitemap.xml.gz
 
-node_modules/*
-.idea/*
-vendor/*
+node_modules
+.idea
+./vscode
 .env
-docs/*
-output/*
-/vendor/
+docs
+output
+vendor
+public
+imgcache
+.DS_Store

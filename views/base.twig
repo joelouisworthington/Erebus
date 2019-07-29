@@ -1,9 +1,23 @@
-{% block header %}
-    <meta name="robots" value="noindex"/>
-{% endblock %}
-
-{% block content %}
-{% endblock %}
-
-{% block footer %}
-{% endblock %}
+<!DOCTYPE html>
+<html class="no-js" {{ site.language_attributes }}>
+  <head>
+      <meta charset="{{ site.charset }}"/>
+      <title>{{ function('wp_title') }}</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+      <link rel="author" href="{{ site.theme.link }}/humans.txt"/>
+      <link rel="pingback" href="{{ site.pingback_url }}"/>
+      {{ function('wp_head') }}
+  </head>
+  <body {{ function('body_class') }} data-template="views/base.twig">
+      {% block header %}
+      {% endblock %}
+      {% block content %}
+      {% endblock %}
+      {% block footer %}
+      {% endblock %}
+      {{ function('wp_footer') }}
+  </body>
+</html>

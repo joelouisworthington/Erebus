@@ -7,5 +7,4 @@ require_once "controllers/IndexController.php";
 
 $page = IndexController::indexAction();
 
-Timber::render( $page['templates'], $page['context'] );
-
+Timber::render($page['templates'], $page['context']);

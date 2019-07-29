@@ -1,5 +1,11 @@
 <?php
 
+require 'classes/Wordpress/Manifest.php';
+
+use Strawberrysoup\Wordpress\Manifest;
+
+new Manifest();
+
 add_filter('allowed_block_types', 'allowedBlocks');
 
 /**
@@ -15,7 +21,7 @@ function allowedBlocks($allowed_block_types)
     $allowed = [
         'core/paragraph',
         'core/heading',
-        'core/image'
+        'core/image',
     ];
 
     foreach ($blocks as $block) {
