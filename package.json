@@ -20,7 +20,7 @@
         "gulp-sourcemaps": "^1.6.0",
         "gulp-uglify": "^3.0.0",
         "jquery": "^3.2.1",
-        "normalize.css": "^7.0.0",
+        "normalize.css": "^8.0.1",
         "owl.carousel": "^2.2.0",
         "sass-module-importer": "^1.4.0",
         "vinyl-buffer": "^1.0.0",
